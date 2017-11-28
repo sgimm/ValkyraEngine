@@ -52,7 +52,7 @@ HWND TWinHelper::Create3DWindow(HINSTANCE hInstance, LPCSTR lpszClassName, int i
 }
 LRESULT CALLBACK TWinHelper::StaticWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
-	TWinHelper* pDXWindow = (TWinHelper*)GetWindowLong(hWnd, GWL_USERDATA);
+	TWinHelper* pDXWindow = (TWinHelper*)GetWindowLong(hWnd, GWLP_USERDATA);
 	return pDXWindow->WndProc(hWnd, uMsg, wParam, lParam);
 }
 LRESULT CALLBACK TWinHelper::WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)

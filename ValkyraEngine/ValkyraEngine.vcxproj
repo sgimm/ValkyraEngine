@@ -43,7 +43,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -100,15 +100,18 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <PrecompiledHeaderFile />
+      <AdditionalIncludeDirectories>D:\Microsoft DirectX SDK %28June 2010%29\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>d3d9.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -155,15 +158,19 @@
     <ClInclude Include="TBaseClass.h" />
     <ClInclude Include="TCamera.h" />
     <ClInclude Include="TComponent.h" />
+    <ClInclude Include="TConfigReader.h" />
     <ClInclude Include="TEngineComponent.h" />
     <ClInclude Include="TGraphicDevice.h" />
     <ClInclude Include="TGraphicObject.h" />
+    <ClInclude Include="TMeshBase.h" />
     <ClInclude Include="TMessage.h" />
     <ClInclude Include="TScene.h" />
     <ClInclude Include="TSenceNode.h" />
     <ClInclude Include="TString.h" />
+    <ClInclude Include="TText.h" />
     <ClInclude Include="TTimerHelper.h" />
     <ClInclude Include="TValkyraEngine.h" />
+    <ClInclude Include="TZip.h" />
     <ClInclude Include="ValkyraEngine.h" />
     <ClInclude Include="WindowHelper\TWinHelper.h" />
   </ItemGroup>
@@ -172,15 +179,19 @@
     <ClCompile Include="TBaseClass.cpp" />
     <ClCompile Include="TCamera.cpp" />
     <ClCompile Include="TComponent.cpp" />
+    <ClCompile Include="TConfigReader.cpp" />
     <ClCompile Include="TEngineComponent.cpp" />
     <ClCompile Include="TGraphicDevice.cpp" />
     <ClCompile Include="TGraphicObject.cpp" />
+    <ClCompile Include="TMeshBase.cpp" />
     <ClCompile Include="TMessage.cpp" />
     <ClCompile Include="TScene.cpp" />
     <ClCompile Include="TSenceNode.cpp" />
     <ClCompile Include="TString.cpp" />
+    <ClCompile Include="TText.cpp" />
     <ClCompile Include="TTimerHelper.cpp" />
     <ClCompile Include="TValkyraEngine.cpp" />
+    <ClCompile Include="TZip.cpp" />
     <ClCompile Include="ValkyraEngine.cpp" />
     <ClCompile Include="WindowHelper\TWinHelper.cpp" />
   </ItemGroup>

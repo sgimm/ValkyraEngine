@@ -78,6 +78,18 @@
     <ClInclude Include="TGraphicObject.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="TMeshBase.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="TConfigReader.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="TZip.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="TText.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ValkyraEngine.cpp">
@@ -123,6 +135,18 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="TGraphicObject.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="TMeshBase.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="TConfigReader.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="TZip.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="TText.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

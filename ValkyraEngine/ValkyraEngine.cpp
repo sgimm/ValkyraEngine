@@ -6,6 +6,7 @@
 #include "TString.h"
 #include "TTimerHelper.h"
 #include "TGraphicDevice.h"
+#include "TConfigReader.h"
 #define MAX_LOADSTRING 100
 
 // Globale Variablen:
@@ -17,6 +18,7 @@ double dClockCycles;
 double dRenderingClycles;
 double dActualRenderingCycle;
 TTimerHelper th;
+TConfigReader* tconf;
 bool bInitialized = false;
 bool bRetainedModeRendering = false;
 
@@ -31,6 +33,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	s = "hallo";
 	s += " Welt!";
 	*/
+	tconf = new TConfigReader();
+	tconf->ReadConfig();
 	dClockCycles = 0.0f;
 	dRenderingClycles = 0.0f;
 	MSG msg;
