@@ -1,7 +1,7 @@
 #pragma once
 #include <d3d9.h>
 
-class TGraphicDevice
+class TDirectX9Device
 {
 private:
 	LPDIRECT3DDEVICE9 m_lpd3ddevice;
@@ -27,8 +27,8 @@ public:
 		D3DMULTISAMPLE_TYPE MultiSampleType;
 	};
 	PresentationParams pp;
-	TGraphicDevice();
-	~TGraphicDevice();
+	TDirectX9Device();
+	~TDirectX9Device();
 	
 	void InitDevice(HWND hwnd);
 	void BeginRender();

@@ -5,12 +5,12 @@
 #include "WindowHelper\TWinHelper.h"
 #include "TString.h"
 #include "TTimerHelper.h"
-#include "TGraphicDevice.h"
+#include "TDirectX9Device.h"
 #include "TConfigReader.h"
 #define MAX_LOADSTRING 100
 
 // Globale Variablen:
-TGraphicDevice* _device;
+TDirectX9Device* _device;
 HINSTANCE hInst;                                // Aktuelle Instanz
 TWinHelper* Window;
 HWND hWindow;
@@ -42,8 +42,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	bRetainedModeRendering = false;
 	//////////
 	// Test //
-	_device = new TGraphicDevice();
-	TGraphicDevice::PresentationParams pp;
+	_device = new TDirectX9Device();
+	TDirectX9Device::PresentationParams pp;
 	ZeroMemory(&pp, sizeof(pp));
 	pp.uiBackBufferHeight = 1080;
 	pp.uiBackBufferWidth = 1920;

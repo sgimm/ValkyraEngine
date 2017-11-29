@@ -45,9 +45,6 @@
     <ClInclude Include="TString.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="TGraphicDevice.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="TTimerHelper.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
@@ -90,6 +87,15 @@
     <ClInclude Include="TText.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="TGraphicDeviceBase.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="TDirectX9Device.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="TDirectX11Device.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ValkyraEngine.cpp">
@@ -105,9 +111,6 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="TString.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="TGraphicDevice.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="TTimerHelper.cpp">
@@ -147,6 +150,15 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="TText.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="TGraphicDeviceBase.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="TDirectX9Device.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="TDirectX11Device.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

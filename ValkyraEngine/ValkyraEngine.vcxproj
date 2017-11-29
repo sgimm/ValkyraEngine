@@ -159,8 +159,10 @@
     <ClInclude Include="TCamera.h" />
     <ClInclude Include="TComponent.h" />
     <ClInclude Include="TConfigReader.h" />
+    <ClInclude Include="TDirectX11Device.h" />
     <ClInclude Include="TEngineComponent.h" />
-    <ClInclude Include="TGraphicDevice.h" />
+    <ClInclude Include="TDirectX9Device.h" />
+    <ClInclude Include="TGraphicDeviceBase.h" />
     <ClInclude Include="TGraphicObject.h" />
     <ClInclude Include="TMeshBase.h" />
     <ClInclude Include="TMessage.h" />
@@ -180,8 +182,10 @@
     <ClCompile Include="TCamera.cpp" />
     <ClCompile Include="TComponent.cpp" />
     <ClCompile Include="TConfigReader.cpp" />
+    <ClCompile Include="TDirectX11Device.cpp" />
     <ClCompile Include="TEngineComponent.cpp" />
-    <ClCompile Include="TGraphicDevice.cpp" />
+    <ClCompile Include="TDirectX9Device.cpp" />
+    <ClCompile Include="TGraphicDeviceBase.cpp" />
     <ClCompile Include="TGraphicObject.cpp" />
     <ClCompile Include="TMeshBase.cpp" />
     <ClCompile Include="TMessage.cpp" />

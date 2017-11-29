@@ -1,16 +1,16 @@
-#include "TGraphicDevice.h"
+#include "TDirectX9Device.h"
 
 
-TGraphicDevice::TGraphicDevice()
+TDirectX9Device::TDirectX9Device()
 {
 }
 
 
-TGraphicDevice::~TGraphicDevice()
+TDirectX9Device::~TDirectX9Device()
 {
 }
 
-void TGraphicDevice::InitDevice(HWND hwnd)
+void TDirectX9Device::InitDevice(HWND hwnd)
 {
 	m_hwnd = hwnd;
 	if(NULL ==(	m_lpD3d9 = Direct3DCreate9(D3D_SDK_VERSION)))		
@@ -22,19 +22,19 @@ void TGraphicDevice::InitDevice(HWND hwnd)
 	}
 }
 
-void TGraphicDevice::BeginRender()
+void TDirectX9Device::BeginRender()
 {
 	m_lpd3ddevice->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 40, 100), 1.0f, 0);
 	m_lpd3ddevice->BeginScene();
 }
 
-void TGraphicDevice::EndRender()
+void TDirectX9Device::EndRender()
 {
 	m_lpd3ddevice->EndScene();
 	m_lpd3ddevice->Present(NULL, NULL, NULL, NULL);
 }
 
-void TGraphicDevice::SetPresentationParameters(PresentationParams pp)
+void TDirectX9Device::SetPresentationParameters(PresentationParams pp)
 {
 	ZeroMemory(&D3D9pp, sizeof(D3DPRESENT_PARAMETERS));
 	D3D9pp.Windowed = pp.Windowed;
