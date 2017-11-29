@@ -96,6 +96,15 @@
     <ClInclude Include="TDirectX11Device.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="TMiracle.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="TSoundDeviceBase.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="TEngineApplication.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ValkyraEngine.cpp">
@@ -159,6 +168,15 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="TDirectX11Device.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="TMiracle.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="TSoundDeviceBase.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="TEngineApplication.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

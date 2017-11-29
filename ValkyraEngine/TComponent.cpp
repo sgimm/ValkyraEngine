@@ -1,8 +1,9 @@
 #include "TComponent.h"
 
 
-TComponent::TComponent(TComponent* owner, void * parent)
+TComponent::TComponent(TComponent* owner, void * parent, TMiracle* mirc)
 {
+	m_mirc = mirc;
 	szClassName = "TComponent";
 	Children = new TArray(10);	
 	if (owner)
@@ -19,11 +20,11 @@ TComponent::TComponent(TComponent* owner, void * parent)
 	}
 }
 
-void TComponent::Udpdate()
+void TComponent::Update()
 {
 	for (int i = 0; i < Children->Count(); i++)
 	{
-		((TComponent*)Children->GetItemAtIndex(i))->Udpdate();
+		((TComponent*)Children->GetItemAtIndex(i))->Update();
 	}
 }
 
@@ -35,7 +36,7 @@ void TComponent::Render()
 	}
 }
 
-void TComponent::OnMessage(TMessage message)
+void TComponent::OnMessage(TMessage* message)
 {
 	for (int i = 0; i < Children->Count(); i++)
 	{

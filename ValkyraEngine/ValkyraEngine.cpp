@@ -1,47 +1,48 @@
 // "ValkyraEngine.cpp": Definiert den Einstiegspunkt der Anwendung.
 //
-
-#include "ValkyraEngine.h"
+#include "TEngineApplication.h"
 #include "WindowHelper\TWinHelper.h"
 #include "TString.h"
-#include "TTimerHelper.h"
-#include "TDirectX9Device.h"
-#include "TConfigReader.h"
 #define MAX_LOADSTRING 100
 
 // Globale Variablen:
-TDirectX9Device* _device;
+//TDirectX9Device* _device;
+TEngineApplication * _engineApp;
 HINSTANCE hInst;                                // Aktuelle Instanz
 TWinHelper* Window;
 HWND hWindow;
-double dClockCycles;
-double dRenderingClycles;
-double dActualRenderingCycle;
-TTimerHelper th;
-TConfigReader* tconf;
-bool bInitialized = false;
-bool bRetainedModeRendering = false;
+//double dClockCycles;
+//double dRenderingClycles;
+//double dActualRenderingCycle;
+//TTimerHelper th;
+//TConfigReader* tconf;
+//bool bInitialized = false;
+//bool bRetainedModeRendering = false;
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
                      _In_ LPWSTR    lpCmdLine,
                      _In_ int       nCmdShow)
 {
+	_engineApp = new TEngineApplication();
+	_engineApp->InitializeComponents();
     //UNREFERENCED_PARAMETER(hPrevInstance);
     //UNREFERENCED_PARAMETER(lpCmdLine);
 	/*	TString s;
 	s = "hallo";
 	s += " Welt!";
 	*/
+	/*
 	tconf = new TConfigReader();
 	tconf->ReadConfig();
 	dClockCycles = 0.0f;
 	dRenderingClycles = 0.0f;
+	*/
 	MSG msg;
 	hWindow = Window->Create3DWindow(hInstance, "sf", nCmdShow, 0, "Blah");
-	bRetainedModeRendering = false;
 	//////////
 	// Test //
+	/*
 	_device = new TDirectX9Device();
 	TDirectX9Device::PresentationParams pp;
 	ZeroMemory(&pp, sizeof(pp));
@@ -55,40 +56,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_device->SetPresentationParameters(pp);
 	_device->InitDevice(hWindow);
 
+	*/
 
     // Hauptnachrichtenschleife:
     while (GetMessage(&msg, nullptr, 0, 0))
     {
-		if (!bInitialized)
-		{
-			SetThreadPriority(hWindow, THREAD_PRIORITY_HIGHEST);
-			th.PerformanceCounterStart();
-			Sleep(1000);
-			th.PerformanceCounterEnd();
-			dClockCycles = th.GetDifference();
-			bInitialized = true;
-			SetThreadPriority(hWindow, THREAD_PRIORITY_NORMAL);
-			dRenderingClycles = dClockCycles / 60;
-		}
-
-
         TranslateMessage(&msg);
         DispatchMessage(&msg);   
-		if (bRetainedModeRendering)
-		{
-			if (dActualRenderingCycle >= dRenderingClycles)
-			{
-				_device->BeginRender();
-				_device->EndRender();
-				dActualRenderingCycle = 0.0f;
-			}
-			dActualRenderingCycle++;
-		}
-		else
-		{
-			_device->BeginRender();
-			_device->EndRender();
-		}
+		_engineApp->UpdateRender();
     }
     return (int) msg.wParam;
 }
