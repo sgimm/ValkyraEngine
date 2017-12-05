@@ -8,7 +8,7 @@ private:
 	TEngineComponent* cEngineComponent;
 	TMiracle* mirc;
 public:
-	TEngineApplication();
+	TEngineApplication(HWND hwnd);
 	~TEngineApplication();
 	void UpdateRender();
 	void InitializeComponents();	

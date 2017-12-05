@@ -3,7 +3,7 @@
 
 TDirectX11Device::TDirectX11Device()
 {
-	
+	m_szClassName = "TDirectX11Device";
 }
 
 

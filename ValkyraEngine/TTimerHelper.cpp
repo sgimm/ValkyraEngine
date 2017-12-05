@@ -3,6 +3,7 @@
 
 TTimerHelper::TTimerHelper()
 {
+	m_szClassName = "TTimerHelper";
 }
 
 

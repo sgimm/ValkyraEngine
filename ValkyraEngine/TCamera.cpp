@@ -3,6 +3,7 @@
 
 TCamera::TCamera()
 {
+	m_szClassName = "TCamera";
 }
 
 

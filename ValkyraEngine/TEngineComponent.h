@@ -1,7 +1,7 @@
 #pragma once
 #include "TComponent.h"
 #include "TZip.h"
-#include "TConfigReader.h"
+#include "TGraphicDeviceBase.h"
 class TEngineComponent :
 	public TComponent
 {

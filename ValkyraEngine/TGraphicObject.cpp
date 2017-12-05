@@ -3,6 +3,7 @@
 
 TGraphicObject::TGraphicObject()
 {
+	m_szClassName = "TGraphicObject";
 }
 
 

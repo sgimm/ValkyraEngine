@@ -3,7 +3,7 @@
 
 TString::TString()
 {
-	
+	m_szClassName = "TString";
 }
 
 

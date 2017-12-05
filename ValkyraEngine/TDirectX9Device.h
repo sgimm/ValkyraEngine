@@ -1,7 +1,7 @@
 #pragma once
 #include <d3d9.h>
-
-class TDirectX9Device
+#include "TGraphicDeviceBase.h"
+class TDirectX9Device:public TGraphicDeviceBase
 {
 private:
 	LPDIRECT3DDEVICE9 m_lpd3ddevice;
@@ -30,10 +30,11 @@ public:
 	TDirectX9Device();
 	~TDirectX9Device();
 	
-	void InitDevice(HWND hwnd);
+	void InitDevice();
 	void BeginRender();
 	void EndRender();
 	void SetPresentationParameters(PresentationParams pp);
+	void SetPresentationParams(GraphicDeviceConfig* graphicConfig);
 
 };
 

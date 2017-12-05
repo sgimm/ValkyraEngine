@@ -3,6 +3,7 @@
 
 TDirectX9Device::TDirectX9Device()
 {
+	m_szClassName = "TDirectX9Device";
 }
 
 
@@ -10,9 +11,8 @@ TDirectX9Device::~TDirectX9Device()
 {
 }
 
-void TDirectX9Device::InitDevice(HWND hwnd)
+void TDirectX9Device::InitDevice()
 {
-	m_hwnd = hwnd;
 	if(NULL ==(	m_lpD3d9 = Direct3DCreate9(D3D_SDK_VERSION)))		
 	{
 	}
@@ -38,7 +38,7 @@ void TDirectX9Device::SetPresentationParameters(PresentationParams pp)
 {
 	ZeroMemory(&D3D9pp, sizeof(D3DPRESENT_PARAMETERS));
 	D3D9pp.Windowed = pp.Windowed;
-	D3D9pp.SwapEffect = pp.SwapEffekt;
+	D3D9pp.SwapEffect = D3DSWAPEFFECT_DISCARD;
 	D3D9pp.hDeviceWindow = pp.hDeviceWindow;
 	D3D9pp.BackBufferHeight = pp.uiBackBufferHeight;
 	D3D9pp.BackBufferWidth = pp.uiBackBufferWidth;
@@ -50,4 +50,18 @@ void TDirectX9Device::SetPresentationParameters(PresentationParams pp)
 	D3D9pp.MultiSampleType = pp.MultiSampleType;
 	D3D9pp.PresentationInterval = pp.uiPresentationInterval;
 	D3D9pp.BackBufferFormat = pp.BackBufferFormat;
+}
+
+void TDirectX9Device::SetPresentationParams(GraphicDeviceConfig * graphicConfig)
+{
+	m_hwnd = graphicConfig->hWnd;
+	ZeroMemory(&D3D9pp, sizeof(D3DPRESENT_PARAMETERS));
+	D3D9pp.SwapEffect = D3DSWAPEFFECT_DISCARD;
+	D3D9pp.BackBufferFormat = D3DFMT_X8R8G8B8;
+	D3D9pp.BackBufferHeight = graphicConfig->m_iHeight;
+	D3D9pp.BackBufferWidth = graphicConfig->m_iWidth;
+	D3D9pp.Windowed = graphicConfig->m_bWindowed;
+	D3D9pp.hDeviceWindow = graphicConfig->hWnd;
+	D3D9pp.AutoDepthStencilFormat = D3DFMT_D16;
+	D3D9pp.EnableAutoDepthStencil = true;
 }

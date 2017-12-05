@@ -3,6 +3,7 @@
 
 TWinHelper::TWinHelper(void)
 {
+	m_szClassName = "TWinHelper";
 }
 
 

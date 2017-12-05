@@ -5,6 +5,6 @@ public:
 	TBaseClass();
 	~TBaseClass();
 protected:
-	const char* szClassName;
+	const char* m_szClassName;
 };
 

@@ -3,6 +3,7 @@
 
 TMessage::TMessage()
 {
+	m_szClassName = "TMessage";
 }
 
 

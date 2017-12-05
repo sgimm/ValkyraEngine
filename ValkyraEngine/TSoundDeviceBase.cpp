@@ -3,6 +3,7 @@
 
 TSoundDeviceBase::TSoundDeviceBase()
 {
+	m_szClassName = "TSoundDeviceBase";
 }
 
 

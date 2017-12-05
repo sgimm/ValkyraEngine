@@ -4,7 +4,7 @@
 TComponent::TComponent(TComponent* owner, void * parent, TMiracle* mirc)
 {
 	m_mirc = mirc;
-	szClassName = "TComponent";
+	m_szClassName = "TComponent";
 	Children = new TArray(10);	
 	if (owner)
 	{
@@ -16,7 +16,7 @@ TComponent::TComponent(TComponent* owner, void * parent, TMiracle* mirc)
 	else
 	{
 		m_Root = this;
-		m_Owner->iComponentSize++;
+		iComponentSize++;
 	}
 }
 

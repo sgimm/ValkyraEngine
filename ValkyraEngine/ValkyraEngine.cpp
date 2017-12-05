@@ -24,8 +24,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_ LPWSTR    lpCmdLine,
                      _In_ int       nCmdShow)
 {
-	_engineApp = new TEngineApplication();
-	_engineApp->InitializeComponents();
     //UNREFERENCED_PARAMETER(hPrevInstance);
     //UNREFERENCED_PARAMETER(lpCmdLine);
 	/*	TString s;
@@ -40,6 +38,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	*/
 	MSG msg;
 	hWindow = Window->Create3DWindow(hInstance, "sf", nCmdShow, 0, "Blah");
+	_engineApp = new TEngineApplication(hWindow);
+	_engineApp->InitializeComponents();
 	//////////
 	// Test //
 	/*

@@ -9,3 +9,4 @@ TGraphicDeviceBase::TGraphicDeviceBase()
 TGraphicDeviceBase::~TGraphicDeviceBase()
 {
 }
+

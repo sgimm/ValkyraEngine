@@ -1,7 +1,8 @@
 #pragma once
 #include <Windows.h>
+#include "..\TBaseClass.h"
 
-class TWinHelper
+class TWinHelper:public TBaseClass
 {
 private:
 	static LRESULT CALLBACK StaticWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);

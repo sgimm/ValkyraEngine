@@ -1,7 +1,8 @@
 #pragma once
 #define STRING_MAX 2048
 #include <string.h>
-class TString
+#include "TBaseClass.h"
+class TString:public TBaseClass
 {
 private:
 	const char* s;

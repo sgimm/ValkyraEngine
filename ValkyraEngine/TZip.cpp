@@ -3,7 +3,7 @@
 
 void TZip::GetContenFromPackage()
 {
-	
+	m_szClassName = "TZip";
 }
 
 TZip::TZip()

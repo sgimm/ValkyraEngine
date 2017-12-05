@@ -4,7 +4,7 @@ class TSenceNode :
 	public TComponent
 {
 public:	
-	TSenceNode(TComponent* owner, void* parent);
+	TSenceNode(TComponent* owner, void* parent, TMiracle* mirc);
 	~TSenceNode();
 };
 

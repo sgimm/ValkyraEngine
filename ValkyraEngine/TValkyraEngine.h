@@ -1,7 +1,8 @@
 #pragma once
 #include "TBaseClass.h"
 #include "TEngineComponent.h"
-class TValkyraEngine
+#include "TBaseClass.h"
+class TValkyraEngine:public TBaseClass
 {
 private:
 	TEngineComponent* cEngineComponent;

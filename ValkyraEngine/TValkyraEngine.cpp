@@ -3,6 +3,7 @@
 
 TValkyraEngine::TValkyraEngine()
 {
+	m_szClassName = "TValkyraEngine";
 }
 
 

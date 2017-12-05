@@ -3,6 +3,7 @@
 
 void TText::Render()
 {
+	m_szClassName = "TText";
 }
 
 TText::TText()
