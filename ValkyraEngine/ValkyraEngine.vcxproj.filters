@@ -105,6 +105,18 @@
     <ClInclude Include="TEngineApplication.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="TStaticMesh.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="TDNA.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="TRandom.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="TGeneticAlgorithm.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ValkyraEngine.cpp">
@@ -177,6 +189,18 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="TEngineApplication.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="TStaticMesh.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="TDNA.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="TRandom.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="TGeneticAlgorithm.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

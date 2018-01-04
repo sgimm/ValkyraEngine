@@ -3,6 +3,10 @@
 #include "TEngineApplication.h"
 #include "WindowHelper\TWinHelper.h"
 #include "TString.h"
+#include <iostream>
+#include "TRandom.h"
+#include "TGeneticAlgorithm.h"
+#include "xnamath.h"
 #define MAX_LOADSTRING 100
 
 // Globale Variablen:
@@ -11,6 +15,17 @@ TEngineApplication * _engineApp;
 HINSTANCE hInst;                                // Aktuelle Instanz
 TWinHelper* Window;
 HWND hWindow;
+typedef void(*test)();
+TRandom* rnd;
+#pragma region MyRegion
+TGeneticAlgorithm* _gena;
+int iPopilationSize = 500;
+float fMutationRate = 0.008f;
+void GeneticTest();
+const char* szPhrase = "Sein, oder nicht sein, das ist hier die Frage!";
+const char* szValidChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,.|!$%&/()=? ";
+
+#pragma endregion
 //double dClockCycles;
 //double dRenderingClycles;
 //double dActualRenderingCycle;
@@ -18,6 +33,42 @@ HWND hWindow;
 //TConfigReader* tconf;
 //bool bInitialized = false;
 //bool bRetainedModeRendering = false;
+
+void* getRandomChar()
+{
+	int charPos = rnd->Next(0, strlen(szValidChars));
+	return (void*)szValidChars[charPos];
+}
+
+float charGeneFitnessFunction(int index)
+{
+	float score = 0;
+	TDNA* dna = (TDNA*)_gena->m_oPopulation->GetItemAtIndex(index);
+	for (int i = 0; i < dna->_genes->Count(); i++)
+	{
+		if ((char)dna->_genes->GetItemAtIndex(i) == szPhrase[i])
+		{
+			score += 1;
+		}
+	}
+
+	score /= strlen(szPhrase);
+
+	score = ((float)pow(2, score) - 1) / (2 - 1);
+
+	return score;
+}
+
+void* fptest()
+{
+	std::cout << "blahahaha";
+	return 0;
+}
+
+float xFitnessFunction(int index)
+{
+	return 0;
+}
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -37,6 +88,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	dRenderingClycles = 0.0f;
 	*/
 	MSG msg;
+	rnd = new TRandom();
+	
+	_gena = new TGeneticAlgorithm(iPopilationSize, (int)strlen(szPhrase), rnd, &getRandomChar, &charGeneFitnessFunction, fMutationRate);
+
 	hWindow = Window->Create3DWindow(hInstance, "sf", nCmdShow, 0, "Blah");
 	_engineApp = new TEngineApplication(hWindow);
 	_engineApp->InitializeComponents();
@@ -59,11 +114,36 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	*/
 
     // Hauptnachrichtenschleife:
+	AllocConsole();
+	rnd = new TRandom();
+	getRadomGeneFunction g = &fptest;
+	freopen("CONOUT$", "w", stdout);
+
+	char cc[50];
+	
+	while(_gena->GetFitness() < 1)
+	{
+		float x = _gena->GetFitness();
+		_gena->NewGeneration();
+		ZeroMemory(&cc, sizeof(cc));
+		for (int c = 0; c < _gena->m_oBestGenes->Count(); c++)
+		{
+			cc[c] = (char)_gena->m_oBestGenes->GetItemAtIndex(c);
+		}
+		std::cout << cc << "\n";
+	}
+	
     while (GetMessage(&msg, nullptr, 0, 0))
     {
         TranslateMessage(&msg);
         DispatchMessage(&msg);   
+		
 		_engineApp->UpdateRender();
     }
     return (int) msg.wParam;
+}
+
+void GeneticTest()
+{
+
 }
