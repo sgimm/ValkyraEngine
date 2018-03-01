@@ -7,5 +7,6 @@ public:
 	void OnMessage(TMessage* message);
 	TScene(TComponent* owner, void* parent, TMiracle* mirc);
 	~TScene();
+	const char* Serialize();
 };
 

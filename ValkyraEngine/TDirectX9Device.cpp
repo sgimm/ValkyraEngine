@@ -34,6 +34,10 @@ void TDirectX9Device::EndRender()
 	m_lpd3ddevice->Present(NULL, NULL, NULL, NULL);
 }
 
+void TDirectX9Device::AddRenderList()
+{
+}
+
 void TDirectX9Device::SetPresentationParameters(PresentationParams pp)
 {
 	ZeroMemory(&D3D9pp, sizeof(D3DPRESENT_PARAMETERS));

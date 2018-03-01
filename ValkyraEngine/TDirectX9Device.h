@@ -1,6 +1,8 @@
 #pragma once
 #include <d3d9.h>
 #include "TGraphicDeviceBase.h"
+#include "TGraphicObject.h"
+#include "TArray.h"
 class TDirectX9Device:public TGraphicDeviceBase
 {
 private:
@@ -8,7 +10,7 @@ private:
 	LPDIRECT3D9 m_lpD3d9;
 	D3DPRESENT_PARAMETERS D3D9pp;
 	D3DCOLOR m_DeviceClearColor;
-	HWND m_hwnd;
+	HWND m_hwnd;	
 public:
 	struct PresentationParams
 	{
@@ -33,8 +35,8 @@ public:
 	void InitDevice();
 	void BeginRender();
 	void EndRender();
+	void AddRenderList();
 	void SetPresentationParameters(PresentationParams pp);
 	void SetPresentationParams(GraphicDeviceConfig* graphicConfig);
-
 };
 

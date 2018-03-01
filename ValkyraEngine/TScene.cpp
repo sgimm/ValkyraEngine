@@ -18,3 +18,8 @@ TScene::TScene(TComponent * owner, void * parent, TMiracle* mirc):TComponent(own
 TScene::~TScene()
 {
 }
+
+const char * TScene::Serialize()
+{
+	return nullptr;
+}

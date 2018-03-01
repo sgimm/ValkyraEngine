@@ -6,7 +6,6 @@
 #include <iostream>
 #include "TRandom.h"
 #include "TGeneticAlgorithm.h"
-#include "xnamath.h"
 #define MAX_LOADSTRING 100
 
 // Globale Variablen:
@@ -114,6 +113,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	*/
 
     // Hauptnachrichtenschleife:
+	/*
 	AllocConsole();
 	rnd = new TRandom();
 	getRadomGeneFunction g = &fptest;
@@ -132,15 +132,24 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		}
 		std::cout << cc << "\n";
 	}
-	
-    while (GetMessage(&msg, nullptr, 0, 0))
+	*/
+	bool bGotMsg;
+	msg.message = WM_NULL;
+	PeekMessage(&msg, NULL, 0U, 0U, PM_REMOVE);
+    while (WM_QUIT != msg.message)
     {
-        TranslateMessage(&msg);
-        DispatchMessage(&msg);   
-		
-		_engineApp->UpdateRender();
+		bGotMsg = (PeekMessage(&msg, NULL, 0U, 0U, PM_REMOVE) != 0);
+		if (bGotMsg)
+		{
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+		}
+		else
+		{
+			_engineApp->UpdateRender();
+		}
     }
-    return (int) msg.wParam;
+    return S_OK;
 }
 
 void GeneticTest()

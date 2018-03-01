@@ -1,10 +1,13 @@
 #pragma once
 #include "TBaseClass.h"
 #include <Windows.h>
+#include "TArray.h"
 class GraphicDeviceConfig;
 class TGraphicDeviceBase :
 	public TBaseClass
 {
+protected:
+	TArray * oRenderList;
 public:
 	HWND hWnd;
 	TGraphicDeviceBase();
@@ -12,6 +15,8 @@ public:
 	virtual void InitDevice() {};
 	virtual void BeginRender() {};
 	virtual void EndRender() {};
+	virtual void AddRenderList() {};
+	virtual void RemoveRenderList(void*) {};	
 	virtual void SetPresentationParams(GraphicDeviceConfig* graphicConfig) {};
 };
 
