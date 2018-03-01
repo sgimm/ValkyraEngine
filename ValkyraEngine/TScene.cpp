@@ -3,6 +3,7 @@
 
 void TScene::Render()
 {
+	m_szClassName = "TScene";
 }
 
 void TScene::OnMessage(TMessage* message)

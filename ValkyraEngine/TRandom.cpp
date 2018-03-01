@@ -1,6 +1,7 @@
 #include "TRandom.h"
 TRandom::TRandom()
 {
+	m_szClassName = "TRandom";
 }
 
 

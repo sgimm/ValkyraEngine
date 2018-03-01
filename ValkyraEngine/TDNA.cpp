@@ -2,6 +2,7 @@
 
 TDNA::TDNA(int iSize, TRandom* rnd, getRadomGeneFunction fpRndGene, FitnessFunction fpFitnessFnc, bool shouldInitGenes)
 {
+	m_szClassName = "TDNA";
 	_genes = new TArray(iSize);
 	m_fFitness = 0.0f;
 	_fpGetRandomGene = fpRndGene;

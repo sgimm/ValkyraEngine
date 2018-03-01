@@ -4,6 +4,7 @@
 
 TInputComponent::TInputComponent()
 {
+	m_szClassName = "TInputComponent";
 }
 
 

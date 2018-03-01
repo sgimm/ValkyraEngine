@@ -2,6 +2,7 @@
 
 TGeneticAlgorithm::TGeneticAlgorithm(int iPopulationSize, int iDnaSize, TRandom * rnd, getRadomGeneFunction fpGetRandomGeneFunc, FitnessFunction fpFitnessFunc, float fMutationRate)
 {
+	m_szClassName = "TGeneticAlgorithm";
 	m_iGeneration = 1;
 	m_fFitnessSum = 0.0f;
 	m_fMutationRate = fMutationRate;

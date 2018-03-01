@@ -3,6 +3,7 @@
 
 TStaticMesh::TStaticMesh()
 {
+	m_szClassName = "TStaticMesh";
 }
 
 

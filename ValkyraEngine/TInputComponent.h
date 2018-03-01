@@ -1,5 +1,6 @@
 #pragma once
-class TInputComponent
+#include "TBaseClass.h"
+class TInputComponent:public TBaseClass
 {
 public:
 	TInputComponent();

@@ -3,6 +3,7 @@
 
 TGraphicDeviceBase::TGraphicDeviceBase()
 {
+	m_szClassName = "TGraphicDeviceBase";
 }
 
 

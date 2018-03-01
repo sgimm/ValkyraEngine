@@ -3,6 +3,7 @@
 
 void TConfigReader::ReadGraphicConfig()
 {
+	m_szClassName = "TConfigReader";
 	m_GraphicDeviceConfig = new GraphicDeviceConfig();
 	m_GraphicDeviceConfig->m_iWidth = GetPrivateProfileInt("Graphics", "width", 0, ".\\Game.ini");
 	m_GraphicDeviceConfig->m_iHeight = GetPrivateProfileInt("Graphics", "height", 0, ".\\Game.ini");

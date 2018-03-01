@@ -1,9 +1,10 @@
 #pragma once
+#include "TBaseClass.h"
 #include "TDNA.h"
 #include "TArray.h"
 typedef void*(*getRadomGeneFunction)();
 typedef float(*FitnessFunction)(int);
-class TGeneticAlgorithm
+class TGeneticAlgorithm: public TBaseClass
 {
 private:
 	float m_fFitnessSum;

@@ -4,6 +4,7 @@
 
 TEngineApplication::TEngineApplication(HWND hwnd)
 {
+	m_szClassName = "TEngineApplication";
 	mirc = new TMiracle();
 	mirc->m_Hwnd = hwnd;
 	mirc->GraphicDevice = new TDirectX9Device();

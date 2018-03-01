@@ -1,10 +1,11 @@
 #pragma once
 #include <Windows.h>
+#include "TBaseClass.h"
 #include "TRandom.h"
 #include "TArray.h"
 typedef void*(*getRadomGeneFunction)();
 typedef float(*FitnessFunction)(int);
-class TDNA
+class TDNA:public TBaseClass
 {
 private:
 	float m_fMutationRate;
