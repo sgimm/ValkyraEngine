@@ -1,5 +1,6 @@
 #include "TDirectX9Device.h"
-
+#include "TGraphicObject.h"
+#include "TD3DText.h"
 
 TDirectX9Device::TDirectX9Device()
 {
@@ -13,6 +14,9 @@ TDirectX9Device::~TDirectX9Device()
 
 void TDirectX9Device::InitDevice()
 {
+	m_oRenderList = new TArray(50);
+	m_oRenderList->SetResizeable(true);
+	m_oRenderList->SetResizeVector(100);
 	if(NULL ==(	m_lpD3d9 = Direct3DCreate9(D3D_SDK_VERSION)))		
 	{
 	}
@@ -33,6 +37,24 @@ void TDirectX9Device::EndRender()
 	m_lpd3ddevice->EndScene();
 	m_lpd3ddevice->Present(NULL, NULL, NULL, NULL);
 }
+
+void TDirectX9Device::Render()
+{
+	m_lpd3ddevice->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 40, 100), 1.0f, 0);
+	m_lpd3ddevice->BeginScene();
+	for (int i = 0; i < m_oRenderList->Count(); i++)
+		((TGraphicObject*)m_oRenderList->GetItemAtIndex(i))->Render();
+	m_lpd3ddevice->EndScene();
+	m_lpd3ddevice->Present(NULL, NULL, NULL, NULL);
+}
+
+TText* TDirectX9Device::CreateText()
+{
+	TD3DText* text = new TD3DText(m_lpd3ddevice);
+	m_oRenderList->Add(text);
+	return text;
+}
+
 
 void TDirectX9Device::AddRenderList()
 {

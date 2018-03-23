@@ -60,13 +60,24 @@ LRESULT CALLBACK TWinHelper::WndProc(HWND hwnd, UINT message, WPARAM wParam, LPA
 {
 	switch (message)
 	{
+	case WM_PAINT:
+			(*OnPaint)();
+		break;
 	case WM_DESTROY:
 		PostQuitMessage(0);		
 		return 0;
 	case WM_KEYDOWN:
-		if(wParam == VK_ESCAPE)
+		if (wParam == VK_ESCAPE)
+		{
 			PostQuitMessage(0);
-		return 0;
+			return 0;
+		}
+		OnKeyDown(wParam);
+	case WM_KEYUP:
+		OnKeyUp(wParam);
+		break;	
+	case WM_MOUSEMOVE:
+		break;
 	default:
 		break;
 	}

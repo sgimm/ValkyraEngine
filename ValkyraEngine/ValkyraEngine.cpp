@@ -8,6 +8,9 @@
 #include "TGeneticAlgorithm.h"
 #define MAX_LOADSTRING 100
 
+
+void Paint();
+
 // Globale Variablen:
 //TDirectX9Device* _device;
 TEngineApplication * _engineApp;
@@ -90,10 +93,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	rnd = new TRandom();
 	
 	_gena = new TGeneticAlgorithm(iPopilationSize, (int)strlen(szPhrase), rnd, &getRandomChar, &charGeneFitnessFunction, fMutationRate);
-
+	Window = new TWinHelper();
 	hWindow = Window->Create3DWindow(hInstance, "sf", nCmdShow, 0, "Blah");
+	
 	_engineApp = new TEngineApplication(hWindow);
 	_engineApp->InitializeComponents();
+	Window->OnPaint = &Paint;
+	int adsadsad = 0;
 	//////////
 	// Test //
 	/*
@@ -146,12 +152,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		}
 		else
 		{
-			_engineApp->UpdateRender();
+			//_engineApp->UpdateRender();
 		}
     }
     return S_OK;
 }
-
+void Paint()
+{ 
+	_engineApp->UpdateRender();
+}
 void GeneticTest()
 {
 

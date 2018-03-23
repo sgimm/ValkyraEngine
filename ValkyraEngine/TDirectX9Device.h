@@ -5,7 +5,10 @@
 #include "TArray.h"
 class TDirectX9Device:public TGraphicDeviceBase
 {
-private:
+private:	
+	//**********************TEST**********************
+	
+	//************************************************
 	LPDIRECT3DDEVICE9 m_lpd3ddevice;
 	LPDIRECT3D9 m_lpD3d9;
 	D3DPRESENT_PARAMETERS D3D9pp;
@@ -35,6 +38,8 @@ public:
 	void InitDevice();
 	void BeginRender();
 	void EndRender();
+	void Render();
+	TText* CreateText();
 	void AddRenderList();
 	void SetPresentationParameters(PresentationParams pp);
 	void SetPresentationParams(GraphicDeviceConfig* graphicConfig);
