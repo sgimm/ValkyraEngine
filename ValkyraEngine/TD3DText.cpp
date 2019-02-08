@@ -23,3 +23,7 @@ void TD3DText::Render()
 TD3DText::~TD3DText()
 {
 }
+
+void TD3DText::Reset(LPDIRECT3DDEVICE9 lpD3dDevice)
+{
+}

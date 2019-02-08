@@ -1,10 +1,13 @@
 #include "TDirectX9Device.h"
 #include "TGraphicObject.h"
 #include "TD3DText.h"
+#include <atlstr.h>
 
 TDirectX9Device::TDirectX9Device()
 {
 	m_szClassName = "TDirectX9Device";
+	m_iAcutalSate = 0;
+	m_iLastState = -1;
 }
 
 
@@ -35,17 +38,44 @@ void TDirectX9Device::BeginRender()
 void TDirectX9Device::EndRender()
 {
 	m_lpd3ddevice->EndScene();
-	m_lpd3ddevice->Present(NULL, NULL, NULL, NULL);
+	m_hRenderResult = m_lpd3ddevice->Present(NULL, NULL, NULL, NULL);
+	if (m_hRenderResult = D3DERR_DEVICELOST)
+	{
+		MessageBox(0, "Lost Device", "LostDevice", MB_OKCANCEL);
+	}
 }
 
 void TDirectX9Device::Render()
 {
 	m_lpd3ddevice->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 40, 100), 1.0f, 0);
 	m_lpd3ddevice->BeginScene();
-	for (int i = 0; i < m_oRenderList->Count(); i++)
-		((TGraphicObject*)m_oRenderList->GetItemAtIndex(i))->Render();
+	if(m_iAcutalSate == 0)
+		for (int i = 0; i < m_oRenderList->Count(); i++)
+			((TGraphicObject*)m_oRenderList->GetItemAtIndex(i))->Render();
 	m_lpd3ddevice->EndScene();
-	m_lpd3ddevice->Present(NULL, NULL, NULL, NULL);
+	m_hRenderResult = m_lpd3ddevice->Present(NULL, NULL, NULL, NULL);
+	switch (m_hRenderResult)
+	{
+	case D3DERR_DEVICELOST:
+		m_iAcutalSate = 2;
+		if (m_iAcutalSate != m_iLastState)
+		{
+			OutputDebugString("Device Lost \n");
+			//m_lpd3ddevice->Reset(&D3D9pp);			
+		}
+	}
+	if (m_iAcutalSate == 3 && m_hRenderResult == D3D_OK)
+	{
+		//CString t;
+		//t.Format("%d", m_iAcutalSate);
+
+		OutputDebugString("m_actualState = 3");
+		m_iAcutalSate = 0;
+	}
+	if (m_iAcutalSate == 2)
+	{
+		RestoreDevice(&m_iAcutalSate);
+	}
 }
 
 TText* TDirectX9Device::CreateText()
@@ -90,4 +120,28 @@ void TDirectX9Device::SetPresentationParams(GraphicDeviceConfig * graphicConfig)
 	D3D9pp.hDeviceWindow = graphicConfig->hWnd;
 	D3D9pp.AutoDepthStencilFormat = D3DFMT_D16;
 	D3D9pp.EnableAutoDepthStencil = true;
+}
+
+void TDirectX9Device::RestoreDevice(int* state)
+{
+	
+	HRESULT hr = m_lpd3ddevice->TestCooperativeLevel();
+	switch (hr)
+	{		
+		case D3D_OK:	
+			*state = 0;
+			break;
+		case D3DERR_DEVICENOTRESET:
+			hr =  m_lpd3ddevice->Reset(&D3D9pp); 	
+			OutputDebugString("D3DERR_DEVICENOTRESET\n");
+			*state = 3;
+			break;
+	}
+	
+	//CString t;
+	//t.Format("%d", _retVal);
+	
+	//OutputDebugString("restore retval is");
+	//OutputDebugString(t);
+	//OutputDebugString("\n");
 }

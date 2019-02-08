@@ -1,24 +1,12 @@
 #include "TWinHelper.h"
-
-
-TWinHelper::TWinHelper(void)
-{
-	m_szClassName = "TWinHelper";
-}
-
-
-TWinHelper::~TWinHelper(void)
-{
-}
-
-HWND TWinHelper::Create3DWindow(HINSTANCE hInstance, LPCSTR lpszClassName, int iCmdShow, bool Windowed, LPCSTR lpszMenuName)
+HWND Create3DWindow(HINSTANCE hInstance, LPCSTR lpszClassName, int iCmdShow, bool Windowed, LPCSTR lpszMenuName)
 {
 	HWND hwnd;
     WNDCLASSEX wcex;
 	ZeroMemory(&wcex, sizeof(wcex));
     wcex.cbSize = sizeof( WNDCLASSEX );
     wcex.style = CS_HREDRAW | CS_VREDRAW;
-	wcex.lpfnWndProc = StaticWindowProc;
+	wcex.lpfnWndProc = WndProc;
     wcex.hInstance = hInstance;
     wcex.hCursor = LoadCursor( NULL, IDC_ARROW );
     wcex.lpszClassName = lpszClassName;
@@ -51,35 +39,4 @@ HWND TWinHelper::Create3DWindow(HINSTANCE hInstance, LPCSTR lpszClassName, int i
 	ShowWindow(hwnd, iCmdShow);
 	return hwnd;
 }
-LRESULT CALLBACK TWinHelper::StaticWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
-{
-	TWinHelper* pDXWindow = (TWinHelper*)GetWindowLong(hWnd, GWLP_USERDATA);
-	return pDXWindow->WndProc(hWnd, uMsg, wParam, lParam);
-}
-LRESULT CALLBACK TWinHelper::WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
-{
-	switch (message)
-	{
-	case WM_PAINT:
-			(*OnPaint)();
-		break;
-	case WM_DESTROY:
-		PostQuitMessage(0);		
-		return 0;
-	case WM_KEYDOWN:
-		if (wParam == VK_ESCAPE)
-		{
-			PostQuitMessage(0);
-			return 0;
-		}
-		OnKeyDown(wParam);
-	case WM_KEYUP:
-		OnKeyUp(wParam);
-		break;	
-	case WM_MOUSEMOVE:
-		break;
-	default:
-		break;
-	}
-	return DefWindowProc(hwnd, message, wParam, lParam);
-}
+

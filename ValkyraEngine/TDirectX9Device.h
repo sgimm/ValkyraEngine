@@ -13,7 +13,10 @@ private:
 	LPDIRECT3D9 m_lpD3d9;
 	D3DPRESENT_PARAMETERS D3D9pp;
 	D3DCOLOR m_DeviceClearColor;
-	HWND m_hwnd;	
+	HWND m_hwnd;
+	HRESULT m_hRenderResult;
+	int m_iAcutalSate;
+	int m_iLastState;
 public:
 	struct PresentationParams
 	{
@@ -43,5 +46,6 @@ public:
 	void AddRenderList();
 	void SetPresentationParameters(PresentationParams pp);
 	void SetPresentationParams(GraphicDeviceConfig* graphicConfig);
+	void RestoreDevice(int* state);
 };
 

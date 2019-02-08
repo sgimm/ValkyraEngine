@@ -19,12 +19,16 @@ TEngineApplication::~TEngineApplication()
 void TEngineApplication::UpdateRender()
 {
 	mirc->GraphicDevice->Render();
-	cEngineComponent->Render();
 }
 
 void TEngineApplication::InitializeComponents()
 {
 	if(cEngineComponent)
-		cEngineComponent->InitializeComponents();
+		cEngineComponent->InitializeComponents();	
 	mirc->GraphicDevice->CreateText();
+}
+
+void TEngineApplication::OnMessage(TMessage * msg)
+{
+	cEngineComponent->OnMessage(msg);
 }

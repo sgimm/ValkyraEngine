@@ -8,7 +8,8 @@ private:
 	D3DXVECTOR3 Position;
 public:
 	virtual void Render() {}
-	virtual void Update() {}
+	virtual void Update() {}	
+	virtual void Reset(LPDIRECT3DDEVICE9 lpD3dDevice) {}
 	TGraphicObject();
 	~TGraphicObject();
 	D3DXVECTOR3 GetPosition();

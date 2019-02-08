@@ -1,5 +1,6 @@
 // "ValkyraEngine.cpp": Definiert den Einstiegspunkt der Anwendung.
 //
+
 #include "TEngineApplication.h"
 #include "WindowHelper\TWinHelper.h"
 #include "TString.h"
@@ -8,14 +9,17 @@
 #include "TGeneticAlgorithm.h"
 #define MAX_LOADSTRING 100
 
-
+typedef void(*OnPaintEvent)();
+typedef void(*OnExitEvent)();
+OnPaintEvent fOnPaint;
+OnExitEvent fOnExit;
 void Paint();
-
+void Exit();
 // Globale Variablen:
 //TDirectX9Device* _device;
 TEngineApplication * _engineApp;
-HINSTANCE hInst;                                // Aktuelle Instanz
-TWinHelper* Window;
+HINSTANCE hInst;   
+
 HWND hWindow;
 typedef void(*test)();
 TRandom* rnd;
@@ -72,6 +76,32 @@ float xFitnessFunction(int index)
 	return 0;
 }
 
+LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+	switch (message)
+	{
+	case WM_PAINT:		
+		fOnPaint();
+		break;
+	case WM_DESTROY:
+		PostQuitMessage(0);
+		return 0;
+	case WM_KEYDOWN:
+		if (wParam == VK_ESCAPE)
+		{
+			fOnExit();
+			PostQuitMessage(0);
+			return 0;
+		}
+	case WM_KEYUP:
+		break;
+	case WM_MOUSEMOVE:
+		break;
+	default:
+		break;
+	}
+	return DefWindowProc(hwnd, message, wParam, lParam);
+}
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
                      _In_ LPWSTR    lpCmdLine,
@@ -93,13 +123,18 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	rnd = new TRandom();
 	
 	_gena = new TGeneticAlgorithm(iPopilationSize, (int)strlen(szPhrase), rnd, &getRandomChar, &charGeneFitnessFunction, fMutationRate);
-	Window = new TWinHelper();
-	hWindow = Window->Create3DWindow(hInstance, "sf", nCmdShow, 0, "Blah");
+	
+	hWindow = Create3DWindow(hInstance, "sf", nCmdShow, 0, "Blah");
 	
 	_engineApp = new TEngineApplication(hWindow);
 	_engineApp->InitializeComponents();
-	Window->OnPaint = &Paint;
+	
+	//CallBackOnPaint = &Paint;
 	int adsadsad = 0;
+	fOnPaint = &Paint;
+	fOnExit = &Exit;
+	// AllocConsole();
+	OutputDebugString("Engine Inialized \n");
 	//////////
 	// Test //
 	/*
@@ -152,14 +187,20 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		}
 		else
 		{
-			//_engineApp->UpdateRender();
+			_engineApp->UpdateRender();
 		}
     }
     return S_OK;
 }
 void Paint()
 { 
-	_engineApp->UpdateRender();
+	OutputDebugString("WM_OnPaint \n");
+	//_engineApp->UpdateRender();
+}
+
+void Exit()
+{
+	OutputDebugString("WM_Exit \n");
 }
 void GeneticTest()
 {

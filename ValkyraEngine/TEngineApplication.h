@@ -12,5 +12,6 @@ public:
 	~TEngineApplication();
 	void UpdateRender();
 	void InitializeComponents();	
+	void OnMessage(TMessage* msg);
 };
 
