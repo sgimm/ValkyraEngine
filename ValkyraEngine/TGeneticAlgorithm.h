@@ -1,7 +1,7 @@
 #pragma once
 #include "TBaseClass.h"
 #include "TDNA.h"
-#include "TArray.h"
+#include "../ValkyraEngine/DataStructure/TArray.h"
 typedef void*(*getRadomGeneFunction)();
 typedef float(*FitnessFunction)(int);
 class TGeneticAlgorithm: public TBaseClass

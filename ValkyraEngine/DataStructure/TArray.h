@@ -26,6 +26,7 @@ public:
 	int Count();
 	int Lenght();
 	void Destroy();
+	void Clear();
 };
 #endif // _TARRAY_H
 

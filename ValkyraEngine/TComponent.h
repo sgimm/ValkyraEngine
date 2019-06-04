@@ -1,6 +1,6 @@
 #pragma once
 #include "TBaseClass.h"
-#include "TArray.h"
+#include "../ValkyraEngine/DataStructure/TArray.h"
 #include "TMessage.h"
 #include "TMiracle.h"
 class TComponent;

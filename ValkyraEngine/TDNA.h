@@ -2,7 +2,7 @@
 #include <Windows.h>
 #include "TBaseClass.h"
 #include "TRandom.h"
-#include "TArray.h"
+#include "../ValkyraEngine/DataStructure/TArray.h"
 typedef void*(*getRadomGeneFunction)();
 typedef float(*FitnessFunction)(int);
 class TDNA:public TBaseClass

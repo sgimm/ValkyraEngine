@@ -2,7 +2,7 @@
 #include <d3d9.h>
 #include "TGraphicDeviceBase.h"
 #include "TGraphicObject.h"
-#include "TArray.h"
+#include  "../ValkyraEngine/DataStructure/TArray.h"
 class TDirectX9Device:public TGraphicDeviceBase
 {
 private:	

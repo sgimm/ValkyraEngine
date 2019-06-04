@@ -1,7 +1,7 @@
 #pragma once
 #include "TBaseClass.h"
 #include <Windows.h>
-#include "TArray.h"
+#include "../ValkyraEngine/DataStructure/TArray.h"
 #include "TText.h"
 class GraphicDeviceConfig;
 class TGraphicDeviceBase :

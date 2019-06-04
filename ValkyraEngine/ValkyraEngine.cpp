@@ -135,6 +135,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	fOnExit = &Exit;
 	// AllocConsole();
 	OutputDebugString("Engine Inialized \n");
+	
 	//////////
 	// Test //
 	/*

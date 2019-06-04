@@ -141,3 +141,11 @@ void TArray::Destroy()
 	free(m_lpVoid);
 	m_lpVoid = 0;
 }
+
+void TArray::Clear()
+{
+	free(m_lpVoid);
+	m_lpVoid = 0;
+	m_iCount = 0;
+	m_lpVoid = (void**)malloc(m_iLenght * sizeof(void*) + 1);
+}

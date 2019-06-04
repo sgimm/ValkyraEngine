@@ -64,12 +64,13 @@ void TDirectX9Device::Render()
 			//m_lpd3ddevice->Reset(&D3D9pp);			
 		}
 	}
-	if (m_iAcutalSate == 3 && m_hRenderResult == D3D_OK)
+	if (m_iAcutalSate == 3)
 	{
 		//CString t;
 		//t.Format("%d", m_iAcutalSate);
 
 		OutputDebugString("m_actualState = 3");
+		RestoreDevice(&m_iAcutalSate);
 		m_iAcutalSate = 0;
 	}
 	if (m_iAcutalSate == 2)
@@ -133,6 +134,8 @@ void TDirectX9Device::RestoreDevice(int* state)
 			break;
 		case D3DERR_DEVICENOTRESET:
 			hr =  m_lpd3ddevice->Reset(&D3D9pp); 	
+			m_oRenderList->Clear();
+			CreateText();
 			OutputDebugString("D3DERR_DEVICENOTRESET\n");
 			*state = 3;
 			break;
