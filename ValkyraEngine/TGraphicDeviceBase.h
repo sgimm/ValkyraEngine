@@ -9,6 +9,7 @@ class TGraphicDeviceBase :
 {
 protected:
 	TArray * m_oRenderList;
+	TArray * m_oRenderListSave;
 public:
 	HWND hWnd;
 	TGraphicDeviceBase();
@@ -17,10 +18,11 @@ public:
 	virtual void BeginRender() {};
 	virtual void EndRender() {};
 	virtual void Render() {};
-	virtual void AddRenderList() {};
+	virtual void AddRenderList(TGraphicObject* gObject) {};
 	virtual void RemoveRenderList(void*) {};	
 	virtual void SetPresentationParams(GraphicDeviceConfig* graphicConfig) {};
 	virtual TText* CreateText() { return nullptr; };
+	virtual void Reset(LPDIRECT3DDEVICE9 m_lpd3ddevice) {}
 };
 
 class GraphicDeviceConfig

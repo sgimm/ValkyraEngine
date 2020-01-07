@@ -9,6 +9,7 @@ private:
 public:
 	virtual void Render() {}
 	virtual void Update() {}	
+	virtual void Initialize(){}
 	virtual void Reset(LPDIRECT3DDEVICE9 lpD3dDevice) {}
 	TGraphicObject();
 	~TGraphicObject();

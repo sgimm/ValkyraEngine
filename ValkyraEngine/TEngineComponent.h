@@ -10,7 +10,7 @@ public:
 	void InitializeComponents();
 	void Render();
 	void Update();
-	void OnMessage(TMessage* message);
+	void OnMessage(TMessage* message);	
 	~TEngineComponent();
 };
 

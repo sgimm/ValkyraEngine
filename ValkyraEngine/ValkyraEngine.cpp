@@ -60,7 +60,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	
 	int adsadsad = 0;
 	fOnPaint = &Paint;
-	fOnExit = &Exit;
+	fOnExit = &Exit;	
 	OutputDebugString("Engine Inialized \n");
 	
 	bool bGotMsg;
@@ -76,7 +76,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		}
 		else
 		{
-			_engineApp->UpdateRender();
 		}
     }
     return S_OK;
@@ -85,6 +84,7 @@ void Paint()
 { 
 	OutputDebugString("WM_OnPaint \n");
 	//_engineApp->UpdateRender();
+	_engineApp->UpdateRender();
 }
 
 void Exit()

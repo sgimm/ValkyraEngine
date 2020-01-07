@@ -20,6 +20,14 @@ TComponent::TComponent(TComponent* owner, void * parent, TMiracle* mirc)
 	}
 }
 
+void TComponent::InitializeComponents()
+{
+	for (int i = 0; i < Children->Count(); i++)
+	{
+		((TComponent*)Children->GetItemAtIndex(i))->InitializeComponents();
+	}
+}
+
 void TComponent::Update()
 {
 	for (int i = 0; i < Children->Count(); i++)

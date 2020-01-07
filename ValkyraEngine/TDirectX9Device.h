@@ -17,6 +17,8 @@ private:
 	HRESULT m_hRenderResult;
 	int m_iAcutalSate;
 	int m_iLastState;
+	void SaveRenderList();
+	void RestoreRenderList();
 public:
 	struct PresentationParams
 	{
@@ -43,7 +45,7 @@ public:
 	void EndRender();
 	void Render();
 	TText* CreateText();
-	void AddRenderList();
+	void AddRenderList(TGraphicObject* gObject);
 	void SetPresentationParameters(PresentationParams pp);
 	void SetPresentationParams(GraphicDeviceConfig* graphicConfig);
 	void RestoreDevice(int* state);

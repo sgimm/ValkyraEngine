@@ -5,7 +5,6 @@ typedef struct SimpleVertex
 {
 #ifdef __cplusplus
 public:
-	D3DXVECTOR3 Pos;
 	D3DXVECTOR3 Normal;
 	D3DCOLOR Color;
 	FLOAT  tu, tv;

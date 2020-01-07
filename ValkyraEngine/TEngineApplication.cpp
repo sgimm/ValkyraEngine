@@ -1,5 +1,6 @@
 #include "TEngineApplication.h"
 #include "TDirectX9Device.h"
+#include "TText.h"
 
 
 TEngineApplication::TEngineApplication(HWND hwnd)
@@ -14,6 +15,7 @@ TEngineApplication::TEngineApplication(HWND hwnd)
 
 TEngineApplication::~TEngineApplication()
 {
+	
 }
 
 void TEngineApplication::UpdateRender()
@@ -25,7 +27,10 @@ void TEngineApplication::InitializeComponents()
 {
 	if(cEngineComponent)
 		cEngineComponent->InitializeComponents();	
-	mirc->GraphicDevice->CreateText();
+
+	TText* text = mirc->GraphicDevice->CreateText();
+	text->Settext("Hallo Welt!");
+	mirc->GraphicDevice->AddRenderList(text);
 }
 
 void TEngineApplication::OnMessage(TMessage * msg)

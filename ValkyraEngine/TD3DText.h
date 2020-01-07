@@ -6,7 +6,8 @@ class TD3DText :
 	public TText
 {
 private:
-	LPD3DXFONT m_lpd3dfont;
+	LPD3DXFONT m_lpd3dfont; 
+	LPDIRECT3DDEVICE9 m_lpd3ddevice;
 public:
 	void Initialize();
 	TD3DText(LPDIRECT3DDEVICE9 lpd3ddevice);

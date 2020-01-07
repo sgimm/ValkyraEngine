@@ -14,7 +14,7 @@ protected:
 	TMiracle* m_mirc;
 public:
 	TComponent(TComponent* owner, void* parent, TMiracle* mirc);
-	virtual void InitializeComponents() {};
+	virtual void InitializeComponents();
 	virtual void Update();
 	virtual void Render();
 	virtual void OnMessage(TMessage* message);
