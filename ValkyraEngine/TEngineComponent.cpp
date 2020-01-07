@@ -8,6 +8,9 @@ TEngineComponent::TEngineComponent(TComponent * owner, void * parent, TMiracle* 
 
 void TEngineComponent::InitializeComponents()
 {		
+	TConfigReader r;
+	r.ReadGraphicConfig();
+	m_mirc->GraphicDevice->SetPresentationParams(r.m_GraphicDeviceConfig);
 	m_mirc->InitDevice();
 	TComponent::InitializeComponents();
 }
