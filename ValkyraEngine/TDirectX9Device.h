@@ -43,8 +43,9 @@ public:
 	void InitDevice();
 	void BeginRender();
 	void EndRender();
-	void Render();
+	HRESULT Render();
 	TText* CreateText();
+	TSprite* CreateSprite();
 	void AddRenderList(TGraphicObject* gObject);
 	void SetPresentationParameters(PresentationParams pp);
 	void SetPresentationParams(GraphicDeviceConfig* graphicConfig);

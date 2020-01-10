@@ -11,7 +11,7 @@ private:
 public:
 	void Initialize();
 	TD3DText(LPDIRECT3DDEVICE9 lpd3ddevice);
-	void Render();
+	HRESULT Render();
 	void Reset(LPDIRECT3DDEVICE9 lpD3dDevice);
 	~TD3DText();
 };

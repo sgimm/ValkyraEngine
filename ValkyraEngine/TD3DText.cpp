@@ -15,9 +15,9 @@ TD3DText::TD3DText(LPDIRECT3DDEVICE9 lpd3ddevice)
 	m_lpd3ddevice = lpd3ddevice;
 }
 
-void TD3DText::Render()
+HRESULT TD3DText::Render()
 {
-	m_lpd3dfont->DrawText(NULL, "Hallo, wie geht es Dir?", -1, &m_oRect, DT_LEFT | DT_NOCLIP, 0xFFFFFFFF);
+	return m_lpd3dfont->DrawText(NULL, "Hallo, wie geht es Dir?", -1, &m_oRect, DT_LEFT | DT_NOCLIP, 0xFFFFFFFF);
 }
 
 TD3DText::~TD3DText()

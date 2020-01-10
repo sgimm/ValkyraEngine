@@ -64,52 +64,29 @@ void TDirectX9Device::InitDevice()
 	{
 		
 	}
+
+	m_lpd3ddevice->SetRenderState(D3DRS_ZENABLE, TRUE);
 }
 
 
 
 void TDirectX9Device::BeginRender()
 {
-	m_lpd3ddevice->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 40, 100), 1.0f, 0);
-	m_lpd3ddevice->BeginScene();
+	if (D3D_OK == m_lpd3ddevice->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 40, 100), 1.0f, 0))
+		m_iAcutalSate = 0;
+	if (D3D_OK == m_lpd3ddevice->Clear(0, NULL, D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(0, 0, 0), 1.0f, 0))
+		m_iAcutalSate = 0;
+	if (D3D_OK == m_lpd3ddevice->BeginScene())
+		m_iAcutalSate = 0;
 }
 
 void TDirectX9Device::EndRender()
 {
 	m_lpd3ddevice->EndScene();
-	m_hRenderResult = m_lpd3ddevice->Present(NULL, NULL, NULL, NULL);
-	if (m_hRenderResult = D3DERR_DEVICELOST)
-	{
-		//MessageBox(0, "Lost Device", "LostDevice", MB_OKCANCEL);
-	}
-	switch (m_hRenderResult)
-	{
-	case D3DERR_DEVICELOST:
-		m_iAcutalSate = 2;
-		if (m_iAcutalSate != m_iLastState)
-		{
-			OutputDebugString("Device Lost \n");
-			if (!m_oRenderListSave)
-			{
-				SaveRenderList();
-			}
-			//m_lpd3ddevice->Reset(&D3D9pp);			
-		}
-	}
-	if (m_iAcutalSate == 3)
-	{
-		//CString t;
-		//t.Format("%d", m_iAcutalSate);
-
-		OutputDebugString("m_actualState = 3");
-		m_iAcutalSate = 0;
-	}
-	if (m_iAcutalSate == 2)
-	{
-	}
+	m_hRenderResult = m_lpd3ddevice->Present(NULL, NULL, NULL, NULL);	
 }
 
-void TDirectX9Device::Render()
+HRESULT TDirectX9Device::Render()
 {
 	if (m_oRenderListSave && m_oRenderListSave->Count() > 0)
 		RestoreRenderList();
@@ -118,15 +95,61 @@ void TDirectX9Device::Render()
 	{		
 		if(m_oRenderList->Count() > 0)
 			for (int i = 0; i < m_oRenderList->Count(); i++)
-				((TGraphicObject*)m_oRenderList->GetItemAtIndex(i))->Render();
+			{				
+				OutputDebugString("Rendering\n");	
+
+
+
+
+				D3DXMATRIX matView;    // the view transform matrix
+				D3DXMatrixLookAtLH(&matView,
+					&D3DXVECTOR3(0.0f, 0.0f, 15.0f),   // the camera position
+					&D3DXVECTOR3(0.0f, 0.0f, 0.0f),    // the look-at position
+					&D3DXVECTOR3(0.0f, 1.0f, 0.0f));    // the up direction
+				m_lpd3ddevice->SetTransform(D3DTS_VIEW, &matView);    // set the view transform to matView
+
+				// set the projection transform
+				D3DXMATRIX matProjection;    // the projection transform matrix
+				D3DXMatrixPerspectiveFovLH(&matProjection,
+					D3DXToRadian(45),    // the horizontal field of view
+					(FLOAT)1920 / (FLOAT)1080, // aspect ratio
+					1.0f,    // the near view-plane
+					100.0f);    // the far view-plane
+				m_lpd3ddevice->SetTransform(D3DTS_PROJECTION, &matProjection);     // set the projection
+
+
+
+
+
+				switch (((TGraphicObject*)m_oRenderList->GetItemAtIndex(i))->Render())
+				{
+				case D3DERR_DEVICELOST:
+					m_iAcutalSate = 2;
+					if (m_iAcutalSate != m_iLastState)
+					{
+						OutputDebugString("Device Lost \n");
+						if (!m_oRenderListSave)
+						{
+							SaveRenderList();
+						}
+					}
+				}
+			}		
 	}
 	EndRender();
-	
+	return NULL;
 }
 
 TText * TDirectX9Device::CreateText()
 {
 	TD3DText* t = new TD3DText(m_lpd3ddevice);
+	t->Initialize();
+	return t;
+}
+
+TSprite * TDirectX9Device::CreateSprite()
+{
+	TSprite* t = new TSprite(m_lpd3ddevice);
 	t->Initialize();
 	return t;
 }
@@ -151,7 +174,7 @@ void TDirectX9Device::SetPresentationParameters(PresentationParams pp)
 	D3D9pp.FullScreen_RefreshRateInHz = pp.uiFullScreen_RefreshRateInHz;
 	D3D9pp.MultiSampleType = pp.MultiSampleType;
 	D3D9pp.PresentationInterval = pp.uiPresentationInterval;
-	D3D9pp.BackBufferFormat = pp.BackBufferFormat;
+	D3D9pp.BackBufferFormat = pp.BackBufferFormat;	
 }
 
 void TDirectX9Device::SetPresentationParams(GraphicDeviceConfig* graphicConfig)
@@ -165,7 +188,7 @@ void TDirectX9Device::SetPresentationParams(GraphicDeviceConfig* graphicConfig)
 	D3D9pp.Windowed = graphicConfig->m_bWindowed;
 	D3D9pp.hDeviceWindow = graphicConfig->hWnd;
 	D3D9pp.AutoDepthStencilFormat = D3DFMT_D16;
-	D3D9pp.EnableAutoDepthStencil = true;
+	D3D9pp.EnableAutoDepthStencil = TRUE;
 }
 
 void TDirectX9Device::RestoreDevice(int* state)
@@ -176,6 +199,7 @@ void TDirectX9Device::RestoreDevice(int* state)
 	{		
 		case D3D_OK:	
 			*state = 0;
+			OutputDebugString("D3D_OK");
 			RestoreRenderList();
 			break;
 		case D3DERR_DEVICENOTRESET:

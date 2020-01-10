@@ -7,7 +7,7 @@ class TGraphicObject :
 private:
 	D3DXVECTOR3 Position;
 public:
-	virtual void Render() {}
+	virtual HRESULT Render() { return NULL; }
 	virtual void Update() {}	
 	virtual void Initialize(){}
 	virtual void Reset(LPDIRECT3DDEVICE9 lpD3dDevice) {}

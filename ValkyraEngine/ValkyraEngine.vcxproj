@@ -177,6 +177,7 @@
     <ClInclude Include="TScene.h" />
     <ClInclude Include="TSenceNode.h" />
     <ClInclude Include="TSoundDeviceBase.h" />
+    <ClInclude Include="TSprite.h" />
     <ClInclude Include="TStaticMesh.h" />
     <ClInclude Include="TString.h" />
     <ClInclude Include="TText.h" />
@@ -210,6 +211,7 @@
     <ClCompile Include="TScene.cpp" />
     <ClCompile Include="TSenceNode.cpp" />
     <ClCompile Include="TSoundDeviceBase.cpp" />
+    <ClCompile Include="TSprite.cpp" />
     <ClCompile Include="TStaticMesh.cpp" />
     <ClCompile Include="TString.cpp" />
     <ClCompile Include="TText.cpp" />

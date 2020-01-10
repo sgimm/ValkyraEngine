@@ -126,6 +126,9 @@
     <ClInclude Include="TD3DText.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="TSprite.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ValkyraEngine.cpp">
@@ -216,6 +219,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="TD3DText.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="TSprite.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
