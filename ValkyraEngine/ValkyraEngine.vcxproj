@@ -170,6 +170,7 @@
     <ClInclude Include="TGraphicDeviceBase.h" />
     <ClInclude Include="TGraphicObject.h" />
     <ClInclude Include="TInputComponent.h" />
+    <ClInclude Include="TLight.h" />
     <ClInclude Include="TMeshBase.h" />
     <ClInclude Include="TMessage.h" />
     <ClInclude Include="TMiracle.h" />
@@ -204,6 +205,7 @@
     <ClCompile Include="TGraphicDeviceBase.cpp" />
     <ClCompile Include="TGraphicObject.cpp" />
     <ClCompile Include="TInputComponent.cpp" />
+    <ClCompile Include="TLight.cpp" />
     <ClCompile Include="TMeshBase.cpp" />
     <ClCompile Include="TMessage.cpp" />
     <ClCompile Include="TMiracle.cpp" />
