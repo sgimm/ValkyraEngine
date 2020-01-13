@@ -46,6 +46,7 @@ public:
 	HRESULT Render();
 	TText* CreateText();
 	TSprite* CreateSprite();
+	TLight* CreateLight();
 	void AddRenderList(TGraphicObject* gObject);
 	void SetPresentationParameters(PresentationParams pp);
 	void SetPresentationParams(GraphicDeviceConfig* graphicConfig);

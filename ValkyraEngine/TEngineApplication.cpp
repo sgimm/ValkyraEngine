@@ -29,6 +29,10 @@ void TEngineApplication::InitializeComponents()
 	if(cEngineComponent)
 		cEngineComponent->InitializeComponents();	
 
+
+	TLight* light = mirc->GraphicDevice->CreateLight();
+	mirc->GraphicDevice->AddRenderList(light);
+
 	TText* text = mirc->GraphicDevice->CreateText();
 	text->Settext("Hallo Welt!");
 	mirc->GraphicDevice->AddRenderList(text);

@@ -4,8 +4,9 @@
 class TGraphicObject :
 	public TBaseClass
 {
-private:
-	D3DXVECTOR3 Position;
+protected:
+	D3DXVECTOR3* m_oPosition;
+	LPDIRECT3DDEVICE9 m_lpd3ddevice;
 public:
 	virtual HRESULT Render() { return NULL; }
 	virtual void Update() {}	
@@ -13,7 +14,7 @@ public:
 	virtual void Reset(LPDIRECT3DDEVICE9 lpD3dDevice) {}
 	TGraphicObject();
 	~TGraphicObject();
-	D3DXVECTOR3 GetPosition();
-	void SetPosition(D3DXVECTOR3 position);
+	D3DXVECTOR3* GetPosition();
+	void SetPosition(D3DXVECTOR3* position);
 };
 

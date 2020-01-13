@@ -4,6 +4,7 @@
 #include "../ValkyraEngine/DataStructure/TArray.h"
 #include "TText.h"
 #include "TSprite.h"
+#include "TLight.h"
 class GraphicDeviceConfig;
 class TGraphicDeviceBase :
 	public TBaseClass
@@ -24,6 +25,7 @@ public:
 	virtual void SetPresentationParams(GraphicDeviceConfig* graphicConfig) {};
 	virtual TText* CreateText() { return nullptr; }
 	virtual TSprite* CreateSprite() { return nullptr; }
+	virtual TLight* CreateLight() { return nullptr; }
 	virtual void Reset(LPDIRECT3DDEVICE9 m_lpd3ddevice) {}
 };
 

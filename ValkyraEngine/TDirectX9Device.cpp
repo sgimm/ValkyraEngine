@@ -154,6 +154,13 @@ TSprite * TDirectX9Device::CreateSprite()
 	return t;
 }
 
+TLight * TDirectX9Device::CreateLight()
+{
+	TLight* l = new TLight(m_lpd3ddevice);
+	l->Initialize();
+	return l;
+}
+
 void TDirectX9Device::AddRenderList(TGraphicObject * gObject)
 {	
 	m_oRenderList->Add(gObject);

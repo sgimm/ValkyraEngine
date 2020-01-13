@@ -1,5 +1,5 @@
 #include "TSprite.h"
-
+#include "d3dx9math.h"
 
 
 TSprite::TSprite(LPDIRECT3DDEVICE9 lpd3ddevice)
@@ -8,6 +8,7 @@ TSprite::TSprite(LPDIRECT3DDEVICE9 lpd3ddevice)
 	m_lpd3ddevice = lpd3ddevice;
 	m_oVertices = new TArray(10);
 	m_oVertices->SetResizeable(0);
+	m_oPosition = new D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 
 }
 
@@ -25,21 +26,17 @@ void TSprite::Initialize()
 	};
 	*/
 	float w, h;
-	float x, y, z;
 
-	x = 3.0f;
-	y = 3.0f;
-	z = 0.5f;
 	w = 3.0f;
 	h = 3.0f;
 	SimpleVertex vul[] =
 	{
-		{x,  y, z,			0xffffffff},
-		{x + w, y, z,		0xffffffff},
-		{x+w, y+h, z,		0xffffffff},
-		{x, y, z,			0xffffffff},
-		{x + w, y + h, z,	0xffffffff},
-		{x, y+h, z,			0xff00ffff}
+		{m_oPosition->x,		m_oPosition->y,		m_oPosition->z,	1.0f,	0xffff00ff, D3DXVECTOR3(1,0,2)},
+		{m_oPosition->x + w,	m_oPosition->y,		m_oPosition->z,	1.0f,	0xffffffff, D3DXVECTOR3(1,0,0)},
+		{m_oPosition->x + w,	m_oPosition->y + h,	m_oPosition->z,	1.0f,	0xff00ffff, D3DXVECTOR3(1,0,3)},
+		{m_oPosition->x,		m_oPosition->y,		m_oPosition->z,	1.0f,	0xff0000ff, D3DXVECTOR3(1,2,0)},
+		{m_oPosition->x + w,	m_oPosition->y + h, m_oPosition->z,	1.0f,	0xffffffff, D3DXVECTOR3(1,0,1)},
+		{m_oPosition->x,		m_oPosition->y +h,	m_oPosition->z,	1.0f,	0xff00ffff, D3DXVECTOR3(1,0,1)}
 	};
 
 	HRESULT result = m_lpd3ddevice->CreateVertexBuffer(6 * sizeof(SimpleVertex),
