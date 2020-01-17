@@ -38,9 +38,9 @@ void TLight::Initialize()
 
 HRESULT TLight::Render()
 {
-	vecDir.x = 1.0f;
-	vecDir.y = 1.0f;
-	vecDir.z = 15.0f;
+	vecDir.x = 3.0f;
+	vecDir.y = 10.0f;
+	vecDir.z = 80.0f;
 	ZeroMemory(&mtrl, sizeof(D3DMATERIAL9));
 	mtrl.Diffuse.r = mtrl.Ambient.r = 1.0f;
 	mtrl.Diffuse.g = mtrl.Ambient.g = 1.0f;

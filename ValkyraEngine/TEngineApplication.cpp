@@ -2,6 +2,7 @@
 #include "TDirectX9Device.h"
 #include "TText.h"
 #include "TSprite.h"
+#include "TFileHelper.h"
 
 
 TEngineApplication::TEngineApplication(HWND hwnd)
@@ -39,6 +40,9 @@ void TEngineApplication::InitializeComponents()
 
 	TSprite* sprite = mirc->GraphicDevice->CreateSprite();	
 	mirc->GraphicDevice->AddRenderList(sprite);
+
+	TFileHelper h;
+	h.LoadStringFromFile(".\\cube.obj");
 
 }
 

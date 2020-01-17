@@ -132,6 +132,9 @@
     <ClInclude Include="TLight.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="TFileHelper.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ValkyraEngine.cpp">
@@ -228,6 +231,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="TLight.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="TFileHelper.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

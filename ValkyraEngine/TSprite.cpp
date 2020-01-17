@@ -25,18 +25,20 @@ void TSprite::Initialize()
 		//{D3DXVECTOR3(10.0f,0.0f,-10.0f), D3DXVECTOR3(1.0f,1.0f,1.0f), D3DCOLOR_XRGB(0,0,255), 0,0}
 	};
 	*/
+	m_oVertices->Add(NULL);
+
 	float w, h;
 
 	w = 3.0f;
 	h = 3.0f;
 	SimpleVertex vul[] =
 	{
-		{m_oPosition->x,		m_oPosition->y,		m_oPosition->z,	1.0f,	0xffff00ff, D3DXVECTOR3(1,0,2)},
-		{m_oPosition->x + w,	m_oPosition->y,		m_oPosition->z,	1.0f,	0xffffffff, D3DXVECTOR3(1,0,0)},
-		{m_oPosition->x + w,	m_oPosition->y + h,	m_oPosition->z,	1.0f,	0xff00ffff, D3DXVECTOR3(1,0,3)},
-		{m_oPosition->x,		m_oPosition->y,		m_oPosition->z,	1.0f,	0xff0000ff, D3DXVECTOR3(1,2,0)},
-		{m_oPosition->x + w,	m_oPosition->y + h, m_oPosition->z,	1.0f,	0xffffffff, D3DXVECTOR3(1,0,1)},
-		{m_oPosition->x,		m_oPosition->y +h,	m_oPosition->z,	1.0f,	0xff00ffff, D3DXVECTOR3(1,0,1)}
+		{m_oPosition->x,		m_oPosition->y,		m_oPosition->z,	1.0f,	0xffffffff, D3DXVECTOR3(0,1,0)},
+		{m_oPosition->x + w,	m_oPosition->y,		m_oPosition->z,	1.0f,	0xffffffff, D3DXVECTOR3(0,1,0)},
+		{m_oPosition->x + w,	m_oPosition->y + h,	m_oPosition->z,	1.0f,	0xffffffff, D3DXVECTOR3(0,1,0)},
+		{m_oPosition->x,		m_oPosition->y,		m_oPosition->z,	1.0f,	0xffffffff, D3DXVECTOR3(0,1,0)},
+		{m_oPosition->x + w,	m_oPosition->y + h, m_oPosition->z,	1.0f,	0xffffffff, D3DXVECTOR3(0,1,0)},
+		{m_oPosition->x,		m_oPosition->y +h,	m_oPosition->z,	1.0f,	0xffffffff, D3DXVECTOR3(0,1,0)}
 	};
 
 	HRESULT result = m_lpd3ddevice->CreateVertexBuffer(6 * sizeof(SimpleVertex),

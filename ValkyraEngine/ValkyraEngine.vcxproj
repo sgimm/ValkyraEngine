@@ -166,6 +166,7 @@
     <ClInclude Include="TEngineApplication.h" />
     <ClInclude Include="TEngineComponent.h" />
     <ClInclude Include="TDirectX9Device.h" />
+    <ClInclude Include="TFileHelper.h" />
     <ClInclude Include="TGeneticAlgorithm.h" />
     <ClInclude Include="TGraphicDeviceBase.h" />
     <ClInclude Include="TGraphicObject.h" />
@@ -201,6 +202,7 @@
     <ClCompile Include="TEngineApplication.cpp" />
     <ClCompile Include="TEngineComponent.cpp" />
     <ClCompile Include="TDirectX9Device.cpp" />
+    <ClCompile Include="TFileHelper.cpp" />
     <ClCompile Include="TGeneticAlgorithm.cpp" />
     <ClCompile Include="TGraphicDeviceBase.cpp" />
     <ClCompile Include="TGraphicObject.cpp" />
